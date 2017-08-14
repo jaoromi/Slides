@@ -129,11 +129,13 @@
       }
       $(".slidesjs-next", $element).click(function(e) {
         e.preventDefault();
+        if(!(_this.data.total > 1)) return;
         _this.stop(true);
         return _this.next(_this.options.navigation.effect);
       });
       $(".slidesjs-previous", $element).click(function(e) {
         e.preventDefault();
+        if(!(_this.data.total > 1)) return;
         _this.stop(true);
         return _this.previous(_this.options.navigation.effect);
       });
@@ -295,6 +297,7 @@
       if (next > this.data.total - 1) {
         next = 0;
       }
+      if (!(this.data.total > 1)) return;
       slidesControl.children(":eq(" + next + ")").css({
         display: "block",
         left: this.options.width
